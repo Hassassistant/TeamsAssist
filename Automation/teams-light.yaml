@@ -1,0 +1,30 @@
+blueprint:
+  name: Update status light with Teams
+  description: Update the color of a light entity based on Microsoft Teams status
+  domain: automation
+  input:
+    light_entity:
+      name: Light
+      description: The light to be updated based on Teams status
+      selector:
+        entity:
+          domain: light
+
+trigger:
+  - platform: state
+    entity_id: sensor.teams_status
+condition: []
+action:
+  - service: light.turn_on
+    data:
+      entity_id: !input light_entity
+      rgb_color: >-
+        {% if states("sensor.teams_status") in ["Available"] %} [0, 255, 10] {%
+        elif states("sensor.teams_status") in ["Do not
+        disturb","Presenting","Focusing"] %} [255, 30, 10] {% elif
+        states("sensor.teams_status") in ["Busy","On the phone","Do not
+        disturb","Presenting","Focusing","In a meeting"] %} [255, 30, 10] {%
+        elif states("sensor.teams_status") in ["Away","Be right back"] %} [252,
+        150, 0] {% else %} [0, 0, 0] {% endif %} 
+    entity_id: !input light_entity
+mode: single
