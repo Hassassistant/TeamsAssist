@@ -1,5 +1,7 @@
 # TeamsAssist
 
+
+
 # Introduction
 We're working a lot at our home office these days. Several people already found inventive solutions to make working in the home office more comfortable. One of these ways is to automate activities in your home automatation system based on your status on Microsoft Teams.
 
@@ -53,3 +55,9 @@ sensor:
 * Click and open the shortcut file called "Run".
 
 After completing the steps below, start your Teams client and verify if the status and activity is updated as expected.
+
+# BluePrint
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FHassassistant%2FTeamsAssist%2Fblob%2Fmain%2FAutomation%2Fteams-light.yaml) 
+
+Changes the color of a light based on your Teams status.
