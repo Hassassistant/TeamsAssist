@@ -65,7 +65,7 @@ Changes the color of a light based on your Teams status.
 
 # Create Scheduled Task Without Microsoft Password.
 
-If you want to use this script without requiring a Windows User Password, Edit the Create-Task.ps1 file with the below code.
+If you want to use this script without requiring a Windows User Password, Edit the Create-Task.ps1 file with the below code the open the file called "Run".
 
 ```ps1
 # Import the Settings.ps1 file
