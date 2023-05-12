@@ -61,3 +61,35 @@ After completing the steps below, start your Teams client and verify if the stat
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FHassassistant%2FTeamsAssist%2Fblob%2Fmain%2FAutomation%2Fteams-light.yaml) 
 
 Changes the color of a light based on your Teams status.
+
+
+# Create Scheduled Task Without Microsoft Password.
+
+If you want to use this script without requiring a Windows User Password, Edit the Create-Task.ps1 file with the below code.
+
+```ps1
+# Import the Settings.ps1 file
+. "C:\Scripts\Settings.ps1"
+
+# Run with Administrator privileges
+
+# Get the current logged in user
+$current_user = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+
+# Define the action
+$action = New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\Scripts\Get-TeamsStatus.ps1`"" -WorkingDirectory "C:\Scripts"
+
+# Define the trigger
+$trigger = New-ScheduledTaskTrigger -AtStartup
+
+# Define the settings
+$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -DontStopOnIdleEnd
+
+# Create the task
+Register-ScheduledTask -TaskName "Team Light 2" -Action $action -Trigger $trigger -Settings $settings -User $current_user
+
+# Start the task
+Start-ScheduledTask -TaskName "Team Light 2"
+
+
+```
