@@ -1,7 +1,7 @@
 # Configure the variables below that will be used in the script
-$HAToken = "" # Example: eyJ0eXAiOiJKV1...
+$HAToken = '' # Example: eyJ0eXAiOiJKV1...
 $UserName = "" # When not sure, open a command prompt and type: echo %USERNAME%
-$UserPass = "" # This is the same password you would use to login to Office.com
+$UserPass = '' # This is the same password you would use to login to Office.com
 $HAUrl = "" # Example: https://yourha.duckdns.org
 
 # Set language variables below
